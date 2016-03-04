@@ -20,7 +20,7 @@ if(process.env.OPENSHIFT_MONGODB_DB_URL){
 mongoose.connect(mongodb_connection_string);
 var db = mongoose.connection;
 
-app.use(express.static(__dirname+'/client'))	;
+app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
 
 app.get('/', function(req, res){
@@ -44,5 +44,5 @@ var server_port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
  
 app.listen(server_port, server_ip_address, function () {
-  console.log( "Listening on " + server_ip_address + ", server_port " + port )
+  console.log( "Listening on " + server_ip_address + ", server_port " + server_port )
 });
