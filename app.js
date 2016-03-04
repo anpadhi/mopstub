@@ -8,7 +8,7 @@ var invoices = require('./routes/invoices');
 var offers = require('./routes/offers');
 
 // Mongoose Connect
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/mopstub');
 var db = mongoose.connection;
 
 app.use(express.static(__dirname+'/client'))	;
