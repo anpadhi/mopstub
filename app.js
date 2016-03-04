@@ -22,5 +22,16 @@ app.use('/api/customers', customers);
 app.use('/api/invoices', invoices);
 app.use('/api/offers', offers);
 
-app.listen(3000);
-console.log('Started on port 3000...');
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3002);
+app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
+
+//var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+//var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+
+//app.listen(port, ip);
+//console.log('Started on port 3000...' + ip + ':'+port);
+var http = require('http');
+http.createServer(app).listen(app.get('port') ,app.get('ip'), function () {
+    console.log("✔ Express server listening at %s:%d ", app.get('ip'),app.get('port'));
+    server();
+});
