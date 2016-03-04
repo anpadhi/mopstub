@@ -41,7 +41,6 @@ var offerSchema = mongoose.Schema({
 	logoURL:{
 		type: String,
 		required: true
-		match: /^http:\/\//i
 	},
 	address:{
 		street: String,
